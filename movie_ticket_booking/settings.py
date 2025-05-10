@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -162,8 +163,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '78738620980-ii8lq33gv4fq6odvj7kr8vr7raferjou.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': os.environ.get('client_id'),
+            'secret':  os.environ.get('secret'),
             'key': ''
         }
     }
@@ -177,7 +178,7 @@ EMAIL_HOST_USER = "anthonyalex543@gmail.com"
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "anthonyalex543@gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = "bqnxsukncqyqfmar"
+EMAIL_HOST_PASSWORD =  os.environ.get('EMAIL_HOST_PASSWORD')
 
 from django.contrib import messages
 MESSAGE_TAGS = {
@@ -187,5 +188,5 @@ MESSAGE_TAGS = {
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
 
-STRIPE_PUBLIC_KEY = 'pk_test_51BTUDGJAJfZb9HEBwDg86TN1KNprHjkfipXmEDMb0gSCassK5T3ZfxsAbcgKVmAIXF7oZ6ItlZZbXO6idTHE67IM007EwQ4uN3'
-STRIPE_SECRET_KEY = 'sk_test_tR3PYbcVNZZ796tH88S4VQ2u'
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
