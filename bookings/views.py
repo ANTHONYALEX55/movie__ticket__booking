@@ -148,9 +148,7 @@ def book_ticket_view(request,showtime_id):
             'tickets' : tickets,
             'booking' : booking,
             'stripe_public_key': settings.STRIPE_PUBLIC_KEY
-
-
-        }
+            }
         return render(request,'payments/proceed_to_payment.html',context)
     return HttpResponse('Invalid Request')
 
